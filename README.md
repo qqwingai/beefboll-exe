@@ -1,6 +1,6 @@
 # beefboll.exe
 
-一个藏在虚构操作系统 **beefboll 2000 Professional** 里的中文个人作品集。
+一个藏在虚构操作系统 **beefboll 2004 Professional** 里的中文个人作品集。
 
 ## 本地启动
 
@@ -13,7 +13,7 @@ npm run dev
 
 ## 已实现
 
-- beefboll 2000 Professional 启动画面
+- beefboll 2004 Professional 启动画面
 - 中文经典桌面、开始菜单、任务栏与系统托盘
 - 双击桌面图标打开窗口
 - 窗口拖动、层叠、最小化、关闭
