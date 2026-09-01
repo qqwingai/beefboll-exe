@@ -29,13 +29,11 @@ const desktopIcons: { id: WindowId; label: string; icon: React.ReactNode }[] = [
   { id: "internet", label: "Internet Explorer", icon: <Globe2 /> },
   { id: "network", label: "网上邻居", icon: <Network /> },
   { id: "trash", label: "回收站", icon: <Recycle /> },
-  { id: "photo", label: "摄影档案", icon: <Camera /> },
-  { id: "lab", label: "视觉实验", icon: <FileImage /> },
 ];
 
 const portfolioItems: { id: WindowId; name: string; detail: string; icon: React.ReactNode }[] = [
   { id: "works", name: "我的作品", detail: "品牌、平面与数字设计", icon: <ImageIcon /> },
-  { id: "photo", name: "摄影", detail: "城市、人物与日常切片", icon: <Camera /> },
+  { id: "photo", name: "摄影档案", detail: "城市、人物与日常切片", icon: <Camera /> },
   { id: "lab", name: "视觉实验", detail: "动态图形与生成式练习", icon: <FileImage /> },
   { id: "profile", name: "个人档案", detail: "关于 beefboll.exe", icon: <UserRound /> },
 ];
