@@ -26,9 +26,11 @@ const windowInfo: Record<WindowId, { title: string; icon: React.ReactNode }> = {
 const desktopIcons: { id: WindowId; label: string; icon: React.ReactNode }[] = [
   { id: "computer", label: "我的电脑", icon: <Computer /> },
   { id: "documents", label: "我的文档", icon: <Folder /> },
+  { id: "internet", label: "Internet Explorer", icon: <Globe2 /> },
   { id: "network", label: "网上邻居", icon: <Network /> },
   { id: "trash", label: "回收站", icon: <Recycle /> },
-  { id: "internet", label: "Internet Explorer", icon: <Globe2 /> },
+  { id: "photo", label: "摄影档案", icon: <Camera /> },
+  { id: "lab", label: "视觉实验", icon: <FileImage /> },
 ];
 
 const portfolioItems: { id: WindowId; name: string; detail: string; icon: React.ReactNode }[] = [
