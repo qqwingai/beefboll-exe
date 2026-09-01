@@ -76,9 +76,9 @@ export default function Home() {
   return (
     <main className="os-shell" onMouseDown={() => startOpen && setStartOpen(false)}>
       <AnimatePresence>{booting && <BootScreen onSkip={() => setBooting(false)} />}</AnimatePresence>
-      <div className="desktop" aria-label="beefboll 2000 桌面">
+      <div className="desktop" aria-label="beefboll 2004 桌面">
         <div className="desktop-brand" aria-hidden="true">
-          <span>beefboll</span><strong>2000</strong><small>PROFESSIONAL</small>
+          <span>beefboll</span><strong>2004</strong><small>PROFESSIONAL</small>
         </div>
 
         <div className="desktop-icons">
@@ -116,7 +116,7 @@ export default function Home() {
 function BootScreen({ onSkip }: { onSkip: () => void }) {
   return (
     <motion.section className="boot" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .35 }} onClick={onSkip}>
-      <div className="boot-logo"><span className="boot-mark">b</span><div><h1>beefboll <i>2000</i></h1><p>Professional</p></div></div>
+      <div className="boot-logo"><span className="boot-mark">b</span><div><h1>beefboll <i>2004</i></h1><p>Professional</p></div></div>
       <div className="boot-copy"><b>基于 NT 技术构建</b><span>正在启动……</span></div>
       <div className="boot-progress"><motion.i initial={{ x: -90 }} animate={{ x: 330 }} transition={{ duration: 1.15, repeat: Infinity, ease: "linear" }} /></div>
       <p className="boot-hint">单击可跳过启动画面</p>
@@ -132,7 +132,7 @@ function StartMenu({ onOpen, onClose }: { onOpen: (id: WindowId) => void; onClos
   ];
   return (
     <motion.div className="start-menu" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: .12 }} onMouseDown={(e) => e.stopPropagation()}>
-      <div className="start-rail"><span>beefboll</span><b>2000</b></div>
+      <div className="start-rail"><span>beefboll</span><b>2004</b></div>
       <div className="start-content">
         {items.map((item) => <button key={item.label} onClick={() => item.id && onOpen(item.id)}><span>{item.icon}</span>{item.label}</button>)}
         <div className="menu-rule" />
@@ -172,7 +172,7 @@ function renderWindowContent(id: WindowId, onOpen: (id: WindowId) => void) {
   if (id === "photo") return <div className="photo-grid"><div/><div/><div/><div/><p>在霓虹、噪点和凌晨四点之间，保存一些没有被命名的瞬间。</p></div>;
   if (id === "lab") return <div className="lab"><div className="lab-orbit"><i/><i/><i/></div><h2>SOFT ERROR / 视觉实验室</h2><p>把排版、代码、偶然性和一点坏品味混在一起。</p></div>;
   if (id === "profile") return <div className="profile"><div className="avatar">b.</div><div><small>USER PROFILE</small><h2>beefboll.exe</h2><p>视觉设计师 / 摄影爱好者 / 互联网考古员。正在收集旧系统里那些诚实、直接又有点笨拙的美。</p><a href="mailto:hello@beefboll.exe">hello@beefboll.exe</a></div></div>;
-  if (id === "computer") return <div className="system-panel"><Monitor/><div><h2>beefboll 2000 Professional</h2><p>系统：beefboll NT</p><p>注册给：访客</p><p>内存：无限创意可用</p></div></div>;
+  if (id === "computer") return <div className="system-panel"><Monitor/><div><h2>beefboll 2004 Professional</h2><p>系统：beefboll NT</p><p>注册给：访客</p><p>内存：无限创意可用</p></div></div>;
   if (id === "network") return <EmptyState icon={<Network/>} title="整个网络" text="正在寻找同样奇怪的人……"/>;
   if (id === "trash") return <EmptyState icon={<Recycle/>} title="回收站为空" text="好点子从不丢进这里。"/>;
   return <div className="browser-page"><div className="browser-logo"><Globe2/><span>beefboll<sup>.exe</sup></span></div><h2>欢迎来到个人主页</h2><p>此页面最好使用好奇心与 800 × 600 分辨率浏览。</p><button onClick={() => onOpen("documents")}>进入我的文档</button></div>;
