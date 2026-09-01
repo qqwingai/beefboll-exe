@@ -116,7 +116,7 @@ export default function Home() {
 function BootScreen({ onSkip }: { onSkip: () => void }) {
   return (
     <motion.section className="boot" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .35 }} onClick={onSkip}>
-      <div className="boot-logo"><span className="boot-mark">b</span><div><h1>beefboll <i>2004</i></h1><p>Professional</p></div></div>
+      <div className="boot-logo"><span className="boot-mark" aria-hidden="true"><i>W</i></span><div><h1>beefboll <i>2004</i></h1></div></div>
       <div className="boot-copy"><b>基于 NT 技术构建</b><span>正在启动……</span></div>
       <div className="boot-progress"><motion.i initial={{ x: -90 }} animate={{ x: 330 }} transition={{ duration: 1.15, repeat: Infinity, ease: "linear" }} /></div>
       <p className="boot-hint">单击可跳过启动画面</p>
