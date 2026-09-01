@@ -44,7 +44,7 @@ const portfolioItems: { id: WindowId; name: string; detail: string; icon: React.
   { id: "works", name: "我的作品", detail: "品牌、平面与数字设计", icon: <ImageIcon /> },
   { id: "photo", name: "摄影档案", detail: "城市、人物与日常切片", icon: <Camera /> },
   { id: "lab", name: "视觉实验", detail: "动态图形与生成式练习", icon: <FileImage /> },
-  { id: "profile", name: "个人档案", detail: "关于 beefboll.exe", icon: <UserRound /> },
+  { id: "profile", name: "个人档案", detail: "关于牛肉丸", icon: <UserRound /> },
 ];
 
 const projects = [
@@ -180,7 +180,7 @@ function renderWindowContent(id: WindowId, onOpen: (id: WindowId) => void) {
   if (id === "works") return <div className="project-list"><div className="intro-line"><span>SELECTED WORK</span><p>选择一个项目，打开我的工作痕迹。</p></div>{projects.map((p) => <article key={p.no} className={p.tone}><div><small>{p.no}</small><strong>{p.title}</strong><span>{p.type}</span></div><ChevronRight/></article>)}</div>;
   if (id === "photo") return <div className="photo-grid"><div/><div/><div/><div/><p>在霓虹、噪点和凌晨四点之间，保存一些没有被命名的瞬间。</p></div>;
   if (id === "lab") return <div className="lab"><div className="lab-orbit"><i/><i/><i/></div><h2>SOFT ERROR / 视觉实验室</h2><p>把排版、代码、偶然性和一点坏品味混在一起。</p></div>;
-  if (id === "profile") return <div className="profile"><div className="avatar">b.</div><div><small>USER PROFILE</small><h2>beefboll.exe</h2><p>视觉设计师 / 摄影爱好者 / 互联网考古员。正在收集旧系统里那些诚实、直接又有点笨拙的美。</p><a href="mailto:hello@beefboll.exe">hello@beefboll.exe</a></div></div>;
+  if (id === "profile") return <div className="profile"><div className="avatar">w</div><div><small>USER PROFILE</small><h2>关于牛肉丸</h2><p>视觉设计师 / 摄影爱好者 / 互联网考古员。正在收集旧系统里那些诚实、直接又有点笨拙的美。</p><a href="mailto:atepraylove@gmail.com">atepraylove@gmail.com</a></div></div>;
   if (id === "computer") return <div className="system-panel"><Monitor/><div><h2>beefboll 2004 Professional</h2><p>系统：beefboll NT</p><p>注册给：访客</p><p>内存：无限创意可用</p></div></div>;
   if (id === "network") return <EmptyState icon={<Network/>} title="整个网络" text="正在寻找同样奇怪的人……"/>;
   return <div className="browser-page"><div className="browser-logo"><Globe2/><span>beefboll<sup>.exe</sup></span></div><h2>欢迎来到个人主页</h2><p>此页面最好使用好奇心与 800 × 600 分辨率浏览。</p><button onClick={() => onOpen("documents")}>进入牛肉丸的文档</button></div>;
