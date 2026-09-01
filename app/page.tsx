@@ -11,11 +11,22 @@ import { useEffect, useMemo, useState } from "react";
 type WindowId = "documents" | "computer" | "network" | "internet" | "works" | "photo" | "lab" | "profile";
 type OpenWindow = { id: WindowId; minimized: boolean; z: number; x: number; y: number };
 
+const classicIconPaths = {
+  computer: "/classic-icons/computer.png",
+  documents: "/classic-icons/documents.png",
+  internet: "/classic-icons/internet.png",
+  network: "/classic-icons/network.png",
+} as const;
+
+const classicIcon = (id: keyof typeof classicIconPaths, mini = false) => (
+  <img className={mini ? "classic-mini-icon" : undefined} src={classicIconPaths[id]} alt="" draggable={false} />
+);
+
 const windowInfo: Record<WindowId, { title: string; icon: React.ReactNode }> = {
-  documents: { title: "牛肉丸的文档", icon: <Folder size={16} fill="#f6cb3c" color="#9a6d00" /> },
-  computer: { title: "牛肉丸的电脑", icon: <Computer size={16} color="#2354a2" /> },
-  network: { title: "网上邻居", icon: <Network size={16} color="#278398" /> },
-  internet: { title: "Internet Explorer", icon: <Globe2 size={16} color="#1672c4" /> },
+  documents: { title: "牛肉丸的文档", icon: classicIcon("documents", true) },
+  computer: { title: "牛肉丸的电脑", icon: classicIcon("computer", true) },
+  network: { title: "网上邻居", icon: classicIcon("network", true) },
+  internet: { title: "Internet Explorer", icon: classicIcon("internet", true) },
   works: { title: "我的作品", icon: <ImageIcon size={16} color="#315ca8" /> },
   photo: { title: "摄影", icon: <Camera size={16} color="#6e536d" /> },
   lab: { title: "视觉实验", icon: <FileImage size={16} color="#c54e68" /> },
@@ -23,10 +34,10 @@ const windowInfo: Record<WindowId, { title: string; icon: React.ReactNode }> = {
 };
 
 const desktopIcons: { id: WindowId; label: string; icon: React.ReactNode }[] = [
-  { id: "computer", label: "牛肉丸的电脑", icon: <Computer /> },
-  { id: "documents", label: "牛肉丸的文档", icon: <Folder /> },
-  { id: "internet", label: "Internet Explorer", icon: <Globe2 /> },
-  { id: "network", label: "网上邻居", icon: <Network /> },
+  { id: "computer", label: "牛肉丸的电脑", icon: classicIcon("computer") },
+  { id: "documents", label: "牛肉丸的文档", icon: classicIcon("documents") },
+  { id: "internet", label: "Internet Explorer", icon: classicIcon("internet") },
+  { id: "network", label: "网上邻居", icon: classicIcon("network") },
 ];
 
 const portfolioItems: { id: WindowId; name: string; detail: string; icon: React.ReactNode }[] = [
