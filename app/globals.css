@@ -8,7 +8,7 @@ html, body { margin:0; width:100%; height:100%; overflow:hidden; }
 body { font-family:Tahoma,"Microsoft YaHei",Arial,sans-serif; font-size:12px; color:#111; user-select:none; }
 button { font:inherit; color:inherit; }
 .os-shell,.desktop { width:100vw; height:100vh; overflow:hidden; }
-.desktop { position:relative; background:linear-gradient(135deg,#087d7f 0%,#098285 58%,#087779 100%); }
+.desktop { position:relative; background:#087d7f url("/beefboll-wallpaper.jpg") center/cover no-repeat; }
 .desktop:after { content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,#fff 3px); }
 .desktop-brand { position:absolute; right:4vw; bottom:70px; color:rgba(255,255,255,.13); display:grid; text-align:right; line-height:.8; font-style:italic; letter-spacing:-4px; transform:scaleX(1.08); transform-origin:right; }
 .desktop-brand span { font-size:clamp(54px,9vw,130px); font-weight:800; }.desktop-brand strong{font-size:clamp(32px,5vw,72px);font-weight:300}.desktop-brand small{font-size:12px;letter-spacing:8px;margin-top:14px}
