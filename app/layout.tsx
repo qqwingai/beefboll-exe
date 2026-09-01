@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "beefboll.exe — 个人作品集",
+  title: "牛肉丸 — 个人作品集",
   description: "一个藏在 beefboll 2000 Professional 里的中文视觉作品集。",
 };
 
