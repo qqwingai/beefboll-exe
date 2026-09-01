@@ -3,19 +3,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Camera, ChevronRight, Computer, FileImage, FileText, Folder, Globe2,
-  Image as ImageIcon, Menu, Monitor, Network, Power, Recycle, Search,
+  Image as ImageIcon, Menu, Monitor, Network, Power, Search,
   Settings, UserRound, Volume2, X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
-type WindowId = "documents" | "computer" | "network" | "trash" | "internet" | "works" | "photo" | "lab" | "profile";
+type WindowId = "documents" | "computer" | "network" | "internet" | "works" | "photo" | "lab" | "profile";
 type OpenWindow = { id: WindowId; minimized: boolean; z: number; x: number; y: number };
 
 const windowInfo: Record<WindowId, { title: string; icon: React.ReactNode }> = {
-  documents: { title: "我的文档", icon: <Folder size={16} fill="#f6cb3c" color="#9a6d00" /> },
-  computer: { title: "我的电脑", icon: <Computer size={16} color="#2354a2" /> },
+  documents: { title: "牛肉丸的文档", icon: <Folder size={16} fill="#f6cb3c" color="#9a6d00" /> },
+  computer: { title: "牛肉丸的电脑", icon: <Computer size={16} color="#2354a2" /> },
   network: { title: "网上邻居", icon: <Network size={16} color="#278398" /> },
-  trash: { title: "回收站", icon: <Recycle size={16} color="#4b7e95" /> },
   internet: { title: "Internet Explorer", icon: <Globe2 size={16} color="#1672c4" /> },
   works: { title: "我的作品", icon: <ImageIcon size={16} color="#315ca8" /> },
   photo: { title: "摄影", icon: <Camera size={16} color="#6e536d" /> },
@@ -24,11 +23,10 @@ const windowInfo: Record<WindowId, { title: string; icon: React.ReactNode }> = {
 };
 
 const desktopIcons: { id: WindowId; label: string; icon: React.ReactNode }[] = [
-  { id: "computer", label: "我的电脑", icon: <Computer /> },
-  { id: "documents", label: "我的文档", icon: <Folder /> },
+  { id: "computer", label: "牛肉丸的电脑", icon: <Computer /> },
+  { id: "documents", label: "牛肉丸的文档", icon: <Folder /> },
   { id: "internet", label: "Internet Explorer", icon: <Globe2 /> },
   { id: "network", label: "网上邻居", icon: <Network /> },
-  { id: "trash", label: "回收站", icon: <Recycle /> },
 ];
 
 const portfolioItems: { id: WindowId; name: string; detail: string; icon: React.ReactNode }[] = [
@@ -127,7 +125,7 @@ function BootScreen({ onSkip }: { onSkip: () => void }) {
 
 function StartMenu({ onOpen, onClose }: { onOpen: (id: WindowId) => void; onClose: () => void }) {
   const items: { label: string; id?: WindowId; icon: React.ReactNode }[] = [
-    { label: "我的作品", id: "works", icon: <ImageIcon/> }, { label: "我的文档", id: "documents", icon: <Folder/> },
+    { label: "我的作品", id: "works", icon: <ImageIcon/> }, { label: "牛肉丸的文档", id: "documents", icon: <Folder/> },
     { label: "Internet Explorer", id: "internet", icon: <Globe2/> }, { label: "个人档案", id: "profile", icon: <UserRound/> },
   ];
   return (
@@ -161,7 +159,7 @@ function DesktopWindow({ window: win, active, onFocus, onClose, onMinimize, onMo
       <nav className="menu-bar"><span>文件(<u>F</u>)</span><span>编辑(<u>E</u>)</span><span>查看(<u>V</u>)</span><span>收藏(<u>A</u>)</span><span>帮助(<u>H</u>)</span></nav>
       <div className="address"><b>地址</b><span>{windowInfo[win.id].icon} C:\beefboll.exe\{windowInfo[win.id].title}</span></div>
       <div className="window-body">{renderWindowContent(win.id, onOpen)}</div>
-      <footer className="statusbar"><span>{win.id === "documents" ? "4 个对象" : "beefboll.exe"}</span><span>我的电脑</span></footer>
+      <footer className="statusbar"><span>{win.id === "documents" ? "4 个对象" : "beefboll.exe"}</span><span>牛肉丸的电脑</span></footer>
     </motion.section>
   );
 }
@@ -174,8 +172,7 @@ function renderWindowContent(id: WindowId, onOpen: (id: WindowId) => void) {
   if (id === "profile") return <div className="profile"><div className="avatar">b.</div><div><small>USER PROFILE</small><h2>beefboll.exe</h2><p>视觉设计师 / 摄影爱好者 / 互联网考古员。正在收集旧系统里那些诚实、直接又有点笨拙的美。</p><a href="mailto:hello@beefboll.exe">hello@beefboll.exe</a></div></div>;
   if (id === "computer") return <div className="system-panel"><Monitor/><div><h2>beefboll 2004 Professional</h2><p>系统：beefboll NT</p><p>注册给：访客</p><p>内存：无限创意可用</p></div></div>;
   if (id === "network") return <EmptyState icon={<Network/>} title="整个网络" text="正在寻找同样奇怪的人……"/>;
-  if (id === "trash") return <EmptyState icon={<Recycle/>} title="回收站为空" text="好点子从不丢进这里。"/>;
-  return <div className="browser-page"><div className="browser-logo"><Globe2/><span>beefboll<sup>.exe</sup></span></div><h2>欢迎来到个人主页</h2><p>此页面最好使用好奇心与 800 × 600 分辨率浏览。</p><button onClick={() => onOpen("documents")}>进入我的文档</button></div>;
+  return <div className="browser-page"><div className="browser-logo"><Globe2/><span>beefboll<sup>.exe</sup></span></div><h2>欢迎来到个人主页</h2><p>此页面最好使用好奇心与 800 × 600 分辨率浏览。</p><button onClick={() => onOpen("documents")}>进入牛肉丸的文档</button></div>;
 }
 
 function EmptyState({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
