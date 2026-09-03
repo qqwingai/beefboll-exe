@@ -48,9 +48,9 @@ const portfolioItems: { id: WindowId; name: string; detail: string; icon: React.
 ];
 
 const projects = [
-  { no: "01", title: "NO SIGNAL", type: "视觉识别 · 2026", tone: "pink" },
-  { no: "02", title: "NIGHT SHIFT", type: "摄影系列 · 2025", tone: "blue" },
-  { no: "03", title: "SOFT ERROR", type: "动态实验 · 2025", tone: "green" },
+  { no: "01", title: "NO SIGNAL", type: "视觉识别文件夹", modified: "2026年", size: "—" },
+  { no: "02", title: "NIGHT SHIFT", type: "摄影系列文件夹", modified: "2025年", size: "—" },
+  { no: "03", title: "SOFT ERROR", type: "动态实验文件夹", modified: "2025年", size: "—" },
 ];
 
 export default function Home() {
@@ -170,14 +170,35 @@ function DesktopWindow({ window: win, active, onFocus, onClose, onMinimize, onMo
       <nav className="menu-bar"><span>文件(<u>F</u>)</span><span>编辑(<u>E</u>)</span><span>查看(<u>V</u>)</span><span>收藏(<u>A</u>)</span><span>帮助(<u>H</u>)</span></nav>
       <div className="address"><b>地址</b><span>{windowInfo[win.id].icon} C:\beefboll.exe\{windowInfo[win.id].title}</span></div>
       <div className="window-body">{renderWindowContent(win.id, onOpen)}</div>
-      <footer className="statusbar"><span>{win.id === "documents" ? "4 个对象" : "beefboll.exe"}</span><span>牛肉丸的电脑</span></footer>
+      <footer className="statusbar"><span>{win.id === "documents" ? "4 个对象" : win.id === "works" ? "3 个对象" : "beefboll.exe"}</span><span>牛肉丸的电脑</span></footer>
     </motion.section>
   );
 }
 
 function renderWindowContent(id: WindowId, onOpen: (id: WindowId) => void) {
   if (id === "documents") return <div className="folder-grid">{portfolioItems.map((item) => <button key={item.id} onDoubleClick={() => onOpen(item.id)} onClick={() => {}}><span>{item.icon}</span><b>{item.name}</b><small>{item.detail}</small></button>)}</div>;
-  if (id === "works") return <div className="project-list"><div className="intro-line"><span>SELECTED WORK</span><p>选择一个项目，打开我的工作痕迹。</p></div>{projects.map((p) => <article key={p.no} className={p.tone}><div><small>{p.no}</small><strong>{p.title}</strong><span>{p.type}</span></div><ChevronRight/></article>)}</div>;
+  if (id === "works") return (
+    <div className="works-explorer">
+      <div className="works-viewbar" aria-label="文件夹查看方式">
+        <span>查看：</span><button type="button">详细资料</button><i aria-hidden="true" />
+        <span>排列图标：</span><button type="button">按名称</button>
+      </div>
+      <div className="works-table-wrap">
+        <table className="works-table">
+          <thead><tr><th>名称</th><th>类型</th><th>修改日期</th><th>大小</th></tr></thead>
+          <tbody>
+            {projects.map((project) => (
+              <tr key={project.no} tabIndex={0}>
+                <td><span className="work-name"><img src={classicIconPaths.documents} alt="" draggable={false} /><strong>{project.title}</strong></span></td>
+                <td>{project.type}</td><td>{project.modified}</td><td>{project.size}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="works-help"><img src={classicIconPaths.documents} alt="" draggable={false} /><div><b>我的作品</b><span>3 个项目文件夹</span><small>选择一个项目查看作品资料。</small></div></div>
+    </div>
+  );
   if (id === "photo") return <div className="photo-grid"><div/><div/><div/><div/><p>在霓虹、噪点和凌晨四点之间，保存一些没有被命名的瞬间。</p></div>;
   if (id === "lab") return <div className="lab"><div className="lab-orbit"><i/><i/><i/></div><h2>SOFT ERROR / 视觉实验室</h2><p>把排版、代码、偶然性和一点坏品味混在一起。</p></div>;
   if (id === "profile") return <div className="profile"><div className="avatar">w</div><div><small>USER PROFILE</small><h2>关于牛肉丸</h2><p>视觉设计师 / 摄影爱好者 / 互联网考古员。正在收集旧系统里那些诚实、直接又有点笨拙的美。</p><a href="mailto:atepraylove@gmail.com">atepraylove@gmail.com</a></div></div>;
